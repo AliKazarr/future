@@ -1,0 +1,115 @@
+/* Glitch (Titreme) Animasyonu */
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: skew(-2deg);
+    filter: hue-rotate(45deg) brightness(1.2);
+  }
+  40% {
+    transform: skew(2deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: skew(-1deg);
+    filter: contrast(1.5);
+  }
+  80% {
+    transform: skew(1deg);
+    opacity: 1;
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/* Sayfa Temizliği */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #050505;
+}
+
+/* Tehlike Anında Ekrana Gelen Parazit Katmanı */
+.danger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("https://media.giphy.com/media/oEI9uWUic0qxG/giphy.gif");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Scrollbar Özelleştirme */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f2ff;
+  border-radius: 10px;
+}
+.danger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Resim yerine CSS ile dijital gürültü (noise) yapalım */
+  background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px
+      2500px,
+    repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px 2500px;
+  background-blend-mode: difference;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1.5);
+    opacity: 1;
+  }
+}
+
+/* Tüm ekran için hafif parazit/scanline efekti */
+.danger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(255, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+  animation: flicker 0.1s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
